@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>秒杀详情</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="container">
+		<div class="pannel apannel-defalut">
+			<div class="pannel-heading text-center">
+				<h2><?php echo $info['name']?></h2>
+			</div>
+			<div class="panel-body text-center">
+				<h2 class="text-danger">
+					<span class="glyphicon glyphicon-time"></span>
+					<span class="glyphicon" id="seckill-box"></span>
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div id="killPhoneModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title text-center">
+						<span class="glyphicon glyphicon-phone"></span>phone：
+					</h3>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-8 col-xs-offset-2">
+							<input type="text" name="killphone" id="killphoneKey"
+								   placeholder="please input your phone" class="form-control"/>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<span id="killphoneMessage" class="glyphicon"></span>
+					<button type="button" id="killPhoneBtn" class="btn btn-success">
+						<span class="glyphicon glyphicon-phone"></span>
+						Submit
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+	<script src="https://cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.js"></script>
+	<script src="/html/seckill.js"></script>
+	<script>
+	/*
+		startTime:'<?php echo date('Y-m-d H:i:s',$info['start_time'])?>',
+			endTime:'<?php echo date('Y-m-d H:i:s',$info['end_time'])?>',
+	*/
+		seckill.detail.init({
+			startTime:<?php echo $info['start_time']*1000?>,
+			endTime:<?php echo $info['end_time']*1000?>,
+			seckillId:<?php echo $info['seckill_id']?>,
+		});
+	</script>
+  </body>
+</html>
